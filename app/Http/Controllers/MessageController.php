@@ -63,6 +63,7 @@ class MessageController extends Controller
     {
 
         $messageshow = Message::find($id);
+        dd($messageshow->contact);
 
         return view('message.show', compact('messageshow'));
     }
@@ -76,6 +77,7 @@ class MessageController extends Controller
     public function edit($id)
     {
         $messageedit = Message::find($id);
+        
         
         return view('message.edit', compact('messageedit'));
     }

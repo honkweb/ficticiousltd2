@@ -117,4 +117,26 @@ class ClientController extends Controller
 
         return redirect()->route('client.index');
     }
+
+    /*----------------------------------------------------------------------*/
+
+    public function createcontact()
+    {
+        return view('client.createcontact');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storecontact(Request $request)
+    {
+       $storecontact = Client::find($id);
+      
+
+        return redirect()->route('client.index')
+            ->with('success', 'Product created successfully.');
+    }
 }

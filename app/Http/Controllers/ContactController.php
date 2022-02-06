@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Contact;
+use App\Models\Message;
 use App\Models\client_contact;
 use Illuminate\Http\Request;
 
@@ -63,6 +64,8 @@ class ContactController extends Controller
     {
 
         $contactshow = Contact::find($id);
+        
+        dd($contactshow->message);
 
         return view('contact.show', compact('contactshow'));
     }

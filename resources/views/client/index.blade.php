@@ -26,6 +26,9 @@ hello
                 <td>{{$clientindex->address}}</td>
                 <td>{{$clientindex->tel}}</td>
                 <td>{{$clientindex->email}}</td>
+                @foreach($clientindex->contact as $clientindex1)
+                <td>{{$clientindex1->name}}</td>
+                @endforeach
             </tr>
             
             @endforeach
