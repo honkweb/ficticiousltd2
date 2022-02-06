@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    // Test database connection
+    try {
+        DB::connection()->getPdo();
+        echo "Connected successfully to: " . DB::connection()->getDatabaseName();
+    } catch (\Exception $e) {
+        die("Could not connect to the database. Please check your configuration. error:" . $e );
+    }
+
     return view('welcome');
 });
+
+Route::resource('/client', ClientController::class);
+Route::resource('/contact', ContactController::class);
+Route::resource('/message', MessageController::class);
