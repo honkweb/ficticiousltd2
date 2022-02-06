@@ -19,8 +19,11 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Client:</strong>
-                    <input type="text" name="client" class="form-control" placeholder="Name">
+                    <select name="client" data-required="1" class="form-control">
+                    @foreach ($clientlist as $dep)
+                    <option value="{{ $dep->name }}" > {{ $dep->name}}</option>
+                    @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

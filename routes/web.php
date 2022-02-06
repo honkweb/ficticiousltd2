@@ -30,5 +30,6 @@ Route::get('/', function () {
 });
 
 Route::resource('/client', ClientController::class);
+Route::get('/client/addcontact', [ClientController::class, 'addcontact']);
 Route::resource('/contact', ContactController::class);
 Route::resource('/message', MessageController::class);

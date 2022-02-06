@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Contact;
+use App\Models\Message;
 use App\Models\client_contact;
 use Illuminate\Http\Request;
 
@@ -63,9 +64,14 @@ class ClientController extends Controller
     {
         $clientshow = Client::find($id);
 
-        dd($clientshow->contact);
+        
 
-        return view('client.show', compact('clientshow'));
+        $clientname =  $clientshow->name;
+        $messageshow = Message::where("client", "LIKE", "$clientname")->get();
+
+        
+
+        return view('client.show', compact('clientshow', 'clientname', 'messageshow'));
     }
 
     /**
@@ -116,27 +122,5 @@ class ClientController extends Controller
         $clientdelete->delete();
 
         return redirect()->route('client.index');
-    }
-
-    /*----------------------------------------------------------------------*/
-
-    public function createcontact()
-    {
-        return view('client.createcontact');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function storecontact(Request $request)
-    {
-       $storecontact = Client::find($id);
-      
-
-        return redirect()->route('client.index')
-            ->with('success', 'Product created successfully.');
     }
 }

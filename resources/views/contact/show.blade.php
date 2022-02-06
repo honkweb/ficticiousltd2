@@ -8,6 +8,11 @@
     <td>{{$contactshow->role}}</td>
     <td>{{$contactshow->tel}}</td>
     <td>{{$contactshow->email}}</td>
+    @foreach($contactshow->message as $contactshow1)
+                <td>{{$contactshow1->client}}</td>
+                <td>{{$contactshow1->title}}</td>
+                <td>{{$contactshow1->message}}</td>
+                @endforeach
     </dl>
 
     <div class="d-flex">

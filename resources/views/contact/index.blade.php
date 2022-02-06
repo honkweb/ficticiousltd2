@@ -25,6 +25,7 @@ hello
                 <td>{{$contactindex->tel}}</td>
                 <td>{{$contactindex->email}}</td>
                 @foreach($contactindex->message as $contactindex1)
+                <td>{{$contactindex1->client}}</td>
                 <td>{{$contactindex1->title}}</td>
                 <td>{{$contactindex1->message}}</td>
                 @endforeach

@@ -65,7 +65,6 @@ class ContactController extends Controller
 
         $contactshow = Contact::find($id);
         
-        dd($contactshow->message);
 
         return view('contact.show', compact('contactshow'));
     }

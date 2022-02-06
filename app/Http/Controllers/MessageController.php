@@ -27,7 +27,11 @@ class MessageController extends Controller
      */
     public function create()
     {
-        return view('message.create');
+
+        $clientlist = Client::all();
+        
+
+        return view('message.create',  compact('clientlist'));
     }
 
     /**
@@ -46,7 +50,8 @@ class MessageController extends Controller
         ]);
 
         $input = $request->all();
-
+        $clientlist = Client::all();
+      
         Message::create($input);
 
         return redirect()->route('message.index')
