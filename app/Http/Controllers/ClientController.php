@@ -63,7 +63,7 @@ class ClientController extends Controller
     {
         $clientshow = Client::find($id);
 
-        var_dump($clientshow->contacts);
+        dd($clientshow->contact);
 
         return view('client.show', compact('clientshow'));
     }
