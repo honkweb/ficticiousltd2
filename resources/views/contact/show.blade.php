@@ -9,9 +9,11 @@
     <td>{{$contactshow->tel}}</td>
     <td>{{$contactshow->email}}</td>
     @foreach($contactshow->message as $contactshow1)
-                <td>{{$contactshow1->client}}</td>
-                <td>{{$contactshow1->title}}</td>
-                <td>{{$contactshow1->message}}</td>
+    <dl>
+                <td>Client - {{$contactshow1->client}}</td>
+                <td>Title - {{$contactshow1->title}}</td>
+                <td>Message - {{$contactshow1->message}}</td>
+</dl>
                 @endforeach
     </dl>
 

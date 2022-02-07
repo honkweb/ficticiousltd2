@@ -118,4 +118,14 @@ class ContactController extends Controller
 
         return redirect()->route('contact.index');
     }
+
+    public function search(Request $request){    
+        $search = $request->input('search');
+        $searchcontact = Contact::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->get();
+    
+        
+        return view('contact.search', compact('searchcontact'));
+    }
 }

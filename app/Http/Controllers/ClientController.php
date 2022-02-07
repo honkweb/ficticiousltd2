@@ -63,14 +63,8 @@ class ClientController extends Controller
     public function show($id)
     {
         $clientshow = Client::find($id);
-
-        
-
         $clientname =  $clientshow->name;
         $messageshow = Message::where("client", "LIKE", "$clientname")->get();
-
-        
-
         return view('client.show', compact('clientshow', 'clientname', 'messageshow'));
     }
 
@@ -123,4 +117,46 @@ class ClientController extends Controller
 
         return redirect()->route('client.index');
     }
+
+    public function addcontact($id)
+    {
+        $clientlist = Client::find($id);
+        $contactlist = Contact::all();
+        
+        return view('client.addcontact', compact('clientlist', 'contactlist'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storecontact(Request $request)
+    {
+        
+        $clientreq = $request->input('clientreq');
+        $contactreq = $request->input('contactreq');
+        $client1 = Client::find($clientreq);
+        $contact1 = Contact::find($contactreq);
+       
+        
+        $client1->contact()->attach($contact1);
+
+        return redirect()->route('client.index')
+            ->with('success', 'Product created successfully.');
+    }
+
+    public function search(Request $request){    
+        $search = $request->input('search');
+        $searchclient = Client::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->get();
+    
+        
+        return view('client.search', compact('searchclient'));
+    }
+    
+
+   
 }

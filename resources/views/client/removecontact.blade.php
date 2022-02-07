@@ -13,7 +13,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{route('client.storecontact')}}" method="POST" >
+    
         @csrf
 
         <div class="row">
@@ -28,7 +28,11 @@
                 <div class="form-group">
                     <select name="contactreq" data-required="1" class="form-control">
                     @foreach ($contactlist as $contactlist1)
-                    <option value="{{ $contactlist1->id}}"> {{ $contactlist1->name}}</option>
+                    
+                    
+                    <option value="{{ $contactlist1}}"> {{$contactlist1 }}</option>
+                    
+                   
                     @endforeach
                     </select>
                 </div>

@@ -28,8 +28,11 @@ Route::get('/', function () {
 
     return view('welcome');
 });
-
+Route::get('/client/search', [ClientController::class, 'search'])->name('client.search');
+Route::get('/contact/search', [ContactController::class, 'search'])->name('contact.search');
 Route::resource('/client', ClientController::class);
-Route::get('/client/addcontact', [ClientController::class, 'addcontact']);
+Route::get('/client/{client}/addcontact', [ClientController::class, 'addcontact'])->name('client.addcontact');
+Route::post('/client/storecontact', [ClientController::class, 'storecontact'])->name('client.storecontact');
+
 Route::resource('/contact', ContactController::class);
 Route::resource('/message', MessageController::class);

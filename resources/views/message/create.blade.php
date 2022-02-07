@@ -1,6 +1,6 @@
 
 
-                <h2>Add contact</h2>
+                <h2>Create Message</h2>
 
 
     @if ($errors->any())

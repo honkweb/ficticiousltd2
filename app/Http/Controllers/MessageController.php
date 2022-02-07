@@ -68,7 +68,6 @@ class MessageController extends Controller
     {
 
         $messageshow = Message::find($id);
-        dd($messageshow->contact);
 
         return view('message.show', compact('messageshow'));
     }
